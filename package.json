@@ -1,0 +1,46 @@
+{
+    "name": "ascii-unicode-escape",
+    "displayName": "ascii-unicode-escape",
+    "description": "Escape non-ASCII symbols with Unicode character codes",
+    "repository": "https://github.com/yaruson/ascii-unicode-escape",
+    "license": "MIT",
+    "version": "0.1.0",
+    "publisher": "yaruson",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "ascii",
+        "unicode",
+        "escape"
+    ],
+    "activationEvents": [
+        "onCommand:extension.escape",
+        "onCommand:extension.unescape"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.escape",
+                "title": "Escape non-ASCII characters"
+            },
+            {
+                "command": "extension.unescape",
+                "title": "Unescape non-ASCII characters"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
