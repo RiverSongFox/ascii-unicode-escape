@@ -6,7 +6,8 @@ export enum MODE {
 }
 
 const RX_NONASCII = /([^\u0000-\u007f]+)/g;
-const RX_UNICODE = /(\\u([0-9A-Fa-f]{4}))/g
+const RX_UNICODE = /(\\u([0-9A-Fa-f]{4}))/g;
+const RX_UNICODE_ES6 = /(\\u\{([0-9A-Fa-f]{1,6})\})/g;
 
 export class Escaper {
 
@@ -14,7 +15,7 @@ export class Escaper {
 
     public process(editor: vscode.TextEditor, mode: MODE) {
 
-        // Process entire document if user haven't selected a text block manually 
+        // Process entire document if user haven't selected a text block manually
         let selection = (() => {
             if (editor.selection.end.isAfter(editor.selection.start)) {
                 return editor.selection;
@@ -59,6 +60,8 @@ export class Escaper {
     public unescape(text: string): string {
         return text.replace(RX_UNICODE, (match: string, sequence: string, code: string) => {
             return String.fromCharCode(parseInt(code, 16));
+        }).replace(RX_UNICODE_ES6, (match: string, sequence: string, code: string) => {
+            return String.fromCodePoint(parseInt(code, 16));
         });
     }
 
