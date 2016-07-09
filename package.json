@@ -4,8 +4,12 @@
     "description": "Escape non-ASCII symbols with Unicode character codes",
     "repository": "https://github.com/yaruson/ascii-unicode-escape",
     "license": "MIT",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "yaruson",
+    "contributors": [
+        "Nikolay Kim <ru.yaruson@gmail.com>",
+        "Michael Huang <mike@htwins.net>"
+    ],
     "engines": {
         "vscode": "^1.0.0"
     },
